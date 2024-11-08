@@ -1,5 +1,6 @@
 from typing import Optional, Dict
 import uuid
+import hashlib
 
 class Users:
     AllUsers: Dict[str, "Users"] = {}
@@ -7,7 +8,7 @@ class Users:
     def __init__(self, username: str, password: str, phone_number: Optional[str] = None):
         
         self.username = username
-        self._password = password
+        self._password = self._hash_password(password)
         self.phone_number = phone_number
         self.id = uuid.uuid4() 
         self.AllUsers[username] = self 
@@ -19,7 +20,10 @@ class Users:
             password=input("it should be 4 or more than 4 characters enter new newone:\n")
         cls.AllUsers[username]=cls(username, phone_number, password)
         return cls(username, phone_number, password)
-        
+    @classmethod
+    def login(cls,username, password):
+
+
 
 
 
