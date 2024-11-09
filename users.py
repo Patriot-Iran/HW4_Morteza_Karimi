@@ -6,6 +6,18 @@ class Users:
     AllUsers: Dict[str, "Users"] = {}
 
     def __init__(self, username: str, password: str, phone_number: Optional[str] = None):
+        """
+    A class to represent and manage user accounts within a system.
+    
+    Attributes:
+        AllUsers (Dict[str, "Users"]): A dictionary storing all registered users,
+                                       with usernames as keys and user objects as values.
+    
+    Methods:
+        __init__(username: str, password: str, phone_number: Optional[str] = None):
+            Initializes a new user with a username, hashed password, and optional phone number,
+            and assigns a unique user ID.
+        """
         self.username = username
         self._password = self._hash_password(password)
         self.phone_number = phone_number
